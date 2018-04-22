@@ -1,8 +1,6 @@
 # 拳头数据
 
-## 快速入门
-
-### 项目使用
+## 项目使用
 
 以下安装都通过`npm`安装
 
@@ -16,7 +14,7 @@ npm install webpack-cli -g
 **在git拉取代码。**
 
 ```bash
-git clone 
+git clone https://github.com/XThomasMan/qtsj.git
 ```
 
 **切换至项目目录。**
