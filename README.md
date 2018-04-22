@@ -22,6 +22,11 @@ git clone https://github.com/XThomasMan/qtsj.git
 ```bash
 cd qtsj
 ```
+**安装依赖包。**
+
+```bash
+npm i
+```
 
 **开发实时编译刷新页面。**
 
