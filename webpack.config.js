@@ -2,6 +2,7 @@ const webpack = require('webpack');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const CleanWebpackPlugin = require('clean-webpack-plugin');
 const UglifyJsPlugin = require('uglifyjs-webpack-plugin');
+const ImageMinPlugin = require('imagemin-webpack-plugin').default;
 
 let entry = {
   vendors: ['./src/utils/get_client_width.min.js'],
@@ -41,7 +42,7 @@ module.exports = {
           }
         ]
       }, {
-        test: /\.(ttf|eot|svg)/,
+        test: /\.(gif|png|jpe?g|ttf|eot|svg)$/i,
         use: [
           {
             loader: 'file-loader',
@@ -81,6 +82,11 @@ module.exports = {
 if (process.env.NODE_ENV === 'production') {
   module.exports.mode = 'production';
   module.exports.plugins.push(new UglifyJsPlugin());
+  module.exports.plugins.push(new ImageMinPlugin({
+    pngquant: {
+      quality: '75-100'
+    }
+  }));
 } else {
   module.exports.mode = 'development';
   module.exports.devtool = '#source-map';
