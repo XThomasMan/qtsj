@@ -1,0 +1,40 @@
+@import (less) "import.fn.less";
+
+.banner {
+  box-sizing: border-box;
+  padding-top: 32 / @rem;
+  background: linear-gradient(135deg, #4c61ff, #4cbcff);
+  height: 350 / @rem;
+  &-title {
+    color: #ffffff;
+    font-size: 60 / @rem;
+    line-height: 80 / @rem;
+    text-align: center;
+  }
+  &-desc {
+    font-size: 30 / @rem;
+    color: #fff;
+    text-align: center;
+  }
+}
+
+.panel {
+  position: absolute;
+  top: 194 / @rem;
+  left: 50%;
+  margin-left: -688 / 2 / @rem;
+  &-item{
+    padding: 36 / @rem 0;
+    align-items: flex-start;
+    .form-item-label{
+      width: 28 / @rem;
+      padding-right: 20 / @rem;
+    }
+  }
+  &-btn{
+    position: absolute;
+    left: 50%;
+    margin-left: -480 / 2 / @rem;
+    bottom: -98 / @rem;
+  }
+}

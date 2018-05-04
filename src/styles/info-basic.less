@@ -1,0 +1,40 @@
+@import (less) "import.fn.less";
+
+.desc {
+  color: #4c74ff;
+  font-size: 24 / @rem;
+  line-height: 80 / @rem;
+  text-align: center;
+}
+
+.label {
+  position: relative;
+  line-height: 72 / @rem;
+  color: #b5b8bb;
+  font-size: 24 / @rem;
+  padding: 0 0 0 72 / @rem;
+  &:after {
+    display: block;
+    content: "";
+    position: absolute;
+    width: 24 / @rem;
+    height: 24 / @rem;
+    left: 30 / @rem;
+    top: 24 / @rem;
+  }
+  &-1 {
+    &:after {
+      .sprites();
+    }
+  }
+  &-2{
+    &:after {
+      .sprites(-32 / @rem);
+    }
+  }
+  &-3{
+    &:after {
+      .sprites(-64 / @rem);
+    }
+  }
+}
