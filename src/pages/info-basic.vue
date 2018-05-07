@@ -34,7 +34,7 @@
     </div>
     <div class="form-item">
       <label class="form-item-label">
-        <input type="radio" />
+        <input type="checkbox" />
       </label>
       <div class="form-item-text">
         我已阅读并同意<a href="#">《拳头个人信贷平台服务协议》</a><a href="#">《用户授权协议》</a>，点击“<mark>完成</mark>”表示你同意遵守相关协议内容

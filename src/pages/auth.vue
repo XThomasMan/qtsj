@@ -22,7 +22,7 @@
       </div>
       <div class="form-item panel-item">
         <label class="form-item-label">
-          <input type="radio" />
+          <input type="checkbox" />
         </label>
         <div class="form-item-text">
           我已阅读并同意<a href="#">《拳头认证协议》</a>
