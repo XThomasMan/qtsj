@@ -45,8 +45,8 @@
       :visible.sync="fruitPickerShow"
       :columns="fruitColumns"
       value-key="name"
-      @confirm="confirmPerson"
-    />
+      @confirm="confirmPerson">
+    </picker>
   </div>
 </template>
 

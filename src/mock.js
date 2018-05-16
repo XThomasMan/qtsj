@@ -4,4 +4,4 @@
 const Mock = require('mockjs');
 import mockData from './models/mock';
 
-Mock.mock(/\/getData/, 'get', mockData.getData);
+Mock.mock(/\/api\/v1\.0\/smscode/, 'get', mockData.smscode);

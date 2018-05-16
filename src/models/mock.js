@@ -1,5 +1,7 @@
 var mock = {
-  getData: {
+  smscode: {
+    "errno": "0",
+    "errmsg": "发送成功"
   }
 };
 

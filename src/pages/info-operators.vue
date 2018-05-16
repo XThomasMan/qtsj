@@ -1,5 +1,5 @@
 <style lang="less" rel="stylesheet/less" scoped>
-  @import "../styles/operators";
+  @import "../styles/info-operators";
 </style>
 
 <template>
