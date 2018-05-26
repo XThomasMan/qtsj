@@ -46,9 +46,18 @@
   }
   &-ft {
     position: relative;
+    &.disabled{
+      span{
+        display: block;
+      }
+      &:after {
+        display: none;
+      }
+    }
     span{
+      display: none;
+      font-size: 28 / @rem;
       color: #999;
-      padding-right: 30 / @rem;
     }
     &:after {
       content: "";

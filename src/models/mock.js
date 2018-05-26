@@ -17,7 +17,7 @@ var mock = {
   },
   status: {
     "errno": "0",
-    "status": [0, 1, 0],
+    "status": [0, 0, 0],
     "errmsg": "请求成功"
   }
 };

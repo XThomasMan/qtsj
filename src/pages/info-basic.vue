@@ -108,6 +108,10 @@
               {
                 name: '10K ~ 15K',
                 id: 4
+              },
+              {
+                name: '20K以上',
+                id: 5
               }
             ]
           }
@@ -212,7 +216,7 @@
             .then(function (response) {
               let result = response.data;
               if (result.errno == 0) {
-                location.href = '/#/complete';
+                location.href = '/#/information';
               }else{
                 self.alert(result.errmsg);
               }

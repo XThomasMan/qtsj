@@ -24,12 +24,14 @@
     </div>
     <button :disabled="!protocol" @click="submit" class="form-btn">完成</button>
     <Dialog :showDialog="showDialog" @update:showDialog="val => showDialog = val" :title="dialogTitle" :desc="dialogDesc" :confirmBtn="confirmBtn" :cancelBtn="cancelBtn"></Dialog>
+    <Loading :showLoading="showLoading" @update:showLoading="val => showLoading = val" :desc="loadingDesc"></Loading>
   </div>
 </template>
 
 <script type="text/ecmascript-6">
   import axios from 'axios';
   import Dialog from '../components/dialog.vue';
+  import Loading from '../components/loading.vue';
   export default{
     data(){
       return {
@@ -39,6 +41,8 @@
         status: '',
         isShowCode: false,
         protocol: false,
+        showLoading: false,
+        loadingDesc: '正在获取,请稍后',
         showDialog: false,
         dialogTitle: '提示',
         dialogDesc: '',
@@ -48,7 +52,7 @@
         }
       }
     },
-    components: {Dialog},
+    components: {Dialog, Loading},
     methods: {
       alert(dialogDesc, dialogTitle, confirmBtn, cancelBtn){
         this.showDialog = true;
@@ -70,17 +74,30 @@
         } else {
           let param = {
             mobile: phoneNum,
-            pwd: this.password
+            pwd: self.password
           };
           if(self.code != ''){
-            param.errno = this.status;
-            param.code = this.code;
+            param.errno = self.status;
+            param.smsCode = self.code;
           }
           axios.post('/api/v1.0/auth/telecom/login', param)
             .then(function (response) {
               let result = response.data;
               if (result.errno == '0') {
-                location.href = '/#/complete';
+                axios.get('/api/v1.0/auth/status')
+                  .then(function (response) {
+                    let result = response.data;
+                    if (result.errno == '0') {
+                      if(result.status[2] === 1){
+                        location.href = '/#/complete';
+                      }else{
+                        location.href = '/#/information';
+                      }
+                    }
+                  })
+                  .catch(function (error) {
+                    console.log(error);
+                  });
               } else if (result.errno == '3069' || result.errno == '3014') {
                 self.status = result.errno;
                 self.isShowCode = true;
