@@ -8,9 +8,9 @@
     <div class="label label-1">个人信息</div>
     <div class="panel">
       <div class="panel-label">居住地址</div>
-      <input type="text" class="panel-input" placeholder="请输入居住地址">
+      <input type="text" class="panel-input" v-model="homeAddress" placeholder="请输入居住地址">
       <div class="panel-label">工作地址</div>
-      <input type="text" class="panel-input" placeholder="请输入工作地址">
+      <input type="text" class="panel-input" v-model="workAddress" placeholder="请输入工作地址">
       <div class="panel-label">个人收入</div>
       <div class="panel-select" :class="wages.id === 0 ? 'placeholder' : ''" @click="wagesPickerShow = true">{{wages.name}}</div>
     </div>
@@ -19,18 +19,18 @@
       <div class="panel-label">关系</div>
       <div class="panel-select" :class="urgent.id === 0 ? 'placeholder' : ''" @click="urgentPickerShow = true">{{urgent.name}}</div>
       <div class="panel-label">姓名</div>
-      <input type="text" class="panel-input" placeholder="请输入姓名">
+      <input type="text" class="panel-input" v-model="urgentName" placeholder="请输入姓名">
       <div class="panel-label">联系电话</div>
-      <input type="text" class="panel-input" placeholder="请输入联系电话">
+      <input type="text" class="panel-input" v-model="urgentPhone" placeholder="请输入联系电话">
     </div>
     <div class="label label-3">其他联系人</div>
     <div class="panel">
       <div class="panel-label">关系</div>
       <div class="panel-select" :class="other.id === 0 ? 'placeholder' : ''" @click="otherPickerShow = true">{{other.name}}</div>
       <div class="panel-label">姓名</div>
-      <input type="text" class="panel-input" placeholder="请输入姓名">
+      <input type="text" class="panel-input" v-model="otherName" placeholder="请输入姓名">
       <div class="panel-label">联系电话</div>
-      <input type="text" class="panel-input" placeholder="请输入联系电话">
+      <input type="text" class="panel-input" v-model="otherPhone" placeholder="请输入联系电话">
     </div>
     <div class="form-item">
       <label class="form-item-label">
@@ -70,6 +70,12 @@
   export default{
     data(){
       return {
+        homeAddress: '',
+        workAddress: '',
+        urgentName: '',
+        urgentPhone: '',
+        otherName: '',
+        otherPhone: '',
         protocol: false,
         showDialog: false,
         dialogTitle: '提示',
@@ -173,12 +179,52 @@
         this.other = picker.getValues()[0]
       },
       submit(){
-        this.alert('1');
+        if (this.homeAddress === '') {
+          this.alert('请输入居住地址!');
+        } else if (this.workAddress === '') {
+          this.alert('请输入工作地址!');
+        } else if (this.wages.id === 0) {
+          this.alert('请选择个人收入!');
+        } else if (this.urgent.id === 0) {
+          this.alert('请选择与紧急联系人关系!');
+        } else if (this.urgentName === '') {
+          this.alert('请输入紧急联系人名字!');
+        } else if (this.urgentPhone === '') {
+          this.alert('请输入紧急联系人电话!');
+        } else if (this.other.id === 0) {
+          this.alert('请选择与其他联系人关系!');
+        } else if (this.otherName === '') {
+          this.alert('请输入其他联系人名字!');
+        } else if (this.otherPhone === '') {
+          this.alert('请输入其他联系人电话!');
+        } else {
+          axios.post('/api/v1.0/auth/essential_info', {
+              address: this.homeAddress,
+              workAddress: this.workAddress,
+              wages: this.wages.name,
+              emeJcontacRelationship: this.urgent.name,
+              emeJcontactName: this.urgentName,
+              emeJcontactPhone: this.urgentPhone,
+              otherContactRelationship: this.other.name,
+              otherContactName: this.otherName,
+              otherContactPhone: this.otherPhone
+            })
+            .then(function (response) {
+              let result = response.data;
+              if (result.errno == 0) {
+                location.href = '/#/complete';
+              }else{
+                self.alert(result.errmsg);
+              }
+            })
+            .catch(function (error) {
+              console.log(error);
+            });
+        }
       }
     },
     computed: {},
     created(){
-
     }
   }
 </script>

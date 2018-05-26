@@ -1,5 +1,5 @@
 <style lang="less" rel="stylesheet/less" scoped>
-  @import "../styles/success";
+  @import "../styles/complete";
 </style>
 
 <template>

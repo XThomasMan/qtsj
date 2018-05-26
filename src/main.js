@@ -5,7 +5,7 @@ import operatorsView from './pages/info-operators.vue';
 import taobaoView from './pages/info-taobao.vue';
 import authView from './pages/auth.vue';
 import infoBasicionView from './pages/info-basic.vue';
-import successView from './pages/success.vue';
+import completeView from './pages/complete.vue';
 import './styles/common.less'
 
 Vue.use(VueRouter);
@@ -17,7 +17,7 @@ const routes = [
   { path: '/info-basic', component: infoBasicionView },
   { path: '/info-taobao', component: taobaoView },
   { path: '/auth', component: authView },
-  { path: '/success', component: successView }
+  { path: '/complete', component: completeView }
 ];
 
 const router = new VueRouter({

@@ -7,7 +7,7 @@
     <div class="mask"></div>
     <div class="dialog">
       <div class="dialog__hd"><strong class="dialog__title">{{title}}</strong></div>
-      <div class="dialog__bd">{{desc}}</div>
+      <div class="dialog__bd" v-html="desc"></div>
       <div class="dialog__ft">
         <a href="javascript:;" class="dialog__btn dialog__btn_default" @click="cancel">取消</a>
         <a href="javascript:;" class="dialog__btn dialog__btn_primary" @click="confirm">确定</a>

@@ -130,6 +130,9 @@ fieldset {
       top: 0;
       right: 0;
       font-size: 24 / @rem;
+      &.disabled{
+        color: #999;
+      }
       &:active{
         opacity: .7;
       }
@@ -239,6 +242,31 @@ fieldset {
     &:active{
       opacity: .7;
     }
+  }
+}
+
+.image-code{
+  padding-top: 30 / @rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  input{
+    margin-left: 30 / @rem;
+    flex: 1;
+    height: 48 / @rem;
+    line-height: 48 / @rem;
+    font-size: 36 / @rem;
+    border: none;
+    min-width: 0;
+    border-bottom: #d7dbde solid 1px;
+    &:focus {
+      border-bottom-color: #4c70ff;
+    }
+  }
+  img{
+    margin-left: 30 / @rem;
+    width: 156 / @rem;
+    height: 48 / @rem;
   }
 }
 
