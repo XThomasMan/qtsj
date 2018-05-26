@@ -10,7 +10,7 @@
       <div class="panel-label">手机号</div>
       <input type="text" class="panel-input" v-model="phoneNum" placeholder="请输入手机号">
       <div class="panel-label">密码</div>
-      <input type="text" class="panel-input" v-model="password" placeholder="请输入密码">
+      <input type="password" class="panel-input" v-model="password" placeholder="请输入密码">
       <div class="panel-label" v-show="isShowCode">验证码</div>
       <div class="panel-wrap" v-show="isShowCode">
         <input type="text" class="panel-input" v-model="code" placeholder="请输入验证码">
